@@ -1,0 +1,93 @@
+! vim: set filetype=xdefaults :
+!! xrdb ~/.Xresources
+
+
+*foreground: #DDCCBB
+
+! Brown BG
+!*background: #30251D
+
+! Grey BG
+*background: #151515
+
+
+!black
+*color0:     #393939
+*color8:     #AF875F
+!red
+*color1:     #BF1E2D
+*color9:     #E7212A
+!green
+*color2:     #9DBA3A
+*color10:    #A9C938
+!yellow
+*color3:     #F5B915
+*color11:    #F7D325
+!blue
+*color4:     #1CA1DB
+*color12:    #00AFDA
+!magenta
+*color5:     #652F90
+*color13:    #894E9F
+!cyan
+*color6:     #EA7D24
+*color14:    #F79321
+!white
+*color7:     #E7E8E9
+*color15:    #F3F3F4
+
+!URxvt*borderColor:        #151515
+!URxvt*colorBD:            #ffffff
+!URxvt*cursorColor:        #ff8939
+!URxvt*cursorColor2:       #151515
+
+! http://dotshare.it/dots/87/
+!! URxvt Appearance
+
+!!URxvt.font: xft:FixedsysExcelsior:size=12:antialias=false\007
+!!URxvt.boldfont: xft:FixedsysExcelsior:size=12:antialias=false\007
+
+
+!URxvt.font:         xft:Spleen 6x12:style=Regular:size=18
+!URxvt.boldfont:     xft:Terminus:style=Bold:size=18
+URxvt.font: xft:CozetteVector:size=15
+URxvt.boldfont: xft:CozetteVector:size=15
+
+
+!URxvt.font: xft:Spleen 6x12:style=Regular:size=17
+!URxvt.boldFont: xft:Spleen 6x12:style=Bold:size=17
+!URxvt.italicFont: xft:FixedsysExcelsior:style=Italic:size=17
+!URxvt.boldItalicfont: xft:FixedsysExcelsior:style=Bold Italic:size=17
+URxvt.letterSpace:       0
+URxvt.lineSpace:         0
+URxvt.geometry:          92x24
+URxvt.internalBorder:    8
+URxvt.cursorBlink:       true
+URxvt.cursorUnderline:   false
+URxvt.saveline:          2048
+URxvt.scrollBar:         false
+URxvt.scrollBar_right:   false
+URxvt.urgentOnBell:      true
+URxvt.depth:             16
+!tirando isso a janela some
+!URxvt.background: [85]#282828
+URxvt.cursorColor:       #00346D
+
+!! Common Keybinds for Navigations
+URxvt.keysym.Control-Right:      \033[1;5C
+URxvt.keysym.Control-Left:       \033[1;5D
+
+! teste
+! Normal copy-paste keybindings without perls
+URxvt.iso14755:                   false
+URxvt.keysym.Shift-Control-V:     eval:paste_clipboard
+URxvt.keysym.Shift-Control-C:     eval:selection_to_clipboard
+
+! tamanho da fonte
+URxvt.keysym.Shift-Up:      font-size:increase
+URxvt.keysym.Shift-Down:    font-size:decrease
+URxvt.keysym.C-equal:       font-size:reset
+
+!! Options
+URxvt.keyboard-select.clipboard: true
+!! URxvt.keyboard-select.clipboard: If true, copy to clipboard too

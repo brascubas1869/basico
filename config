@@ -1,0 +1,288 @@
+###################################
+#\ \   / (_) ___| |_ ___  _ __ \###
+#\\ \ / /| |/ __| __/ _ \| '__| ###
+# \\ V / | | (__| || (_) | |    ###
+#  \\_/  |_|\___|\__\___/|_|   /###
+###################################   
+###################################
+
+
+gaps inner 10px
+gaps outer 0px
+##### Activate smart borders (always)
+smart_borders on
+
+default_border pixel 0
+default_floating_border pixel 0
+
+#redimensionar janelas usando Mouse
+bindsym $mod+Button1 resize mode 4
+
+# tecla 'Super' #
+set $mod Mod4
+
+font xft:Fixedsys Excelsior 15
+#font xft:URWGothic-Book 13
+font pango:CozetteVector 15
+
+
+# change volume or toggle mute
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks; exec dunstify -a i3 "Vol +"
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks; exec dunstify -a i3 "Vol -"
+bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# kill focused window 'fechar janela em foco'
+bindsym $mod+x kill
+bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+
+# Split orientation for the next container
+
+bindsym $mod+w split toggle
+
+# enter fullscreen mode for the focused container
+bindsym $mod+space fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+v layout toggle
+
+# toggle tiling / floating
+bindsym $mod+f floating toggle
+
+floating_minimum_size 75 x 50
+floating_maximum_size -1 x -1
+
+# Una vez agrupadas podremos insertar nuevas ventanas en la posición que exactamente necesitemos.
+
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places
+
+set $ws1 Ⅰ
+set $ws2 Ⅱ
+set $ws3 Ⅲ
+set $ws4 Ⅳ
+set $ws5 Ⅴ
+set $ws6 Ⅵ
+set $ws7 Ⅶ
+set $ws8 Ⅷ
+set $ws9 Ⅸ
+set $ws0 Ⅹ
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws0
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws0
+
+bindsym $mod+slash workspace next
+bindsym $mod+Control+Right workspace next
+bindsym $mod+Control+Left workspace prev
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym ccedilla resize grow width 10 px or 10 ppt
+
+       # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+###redimensiona o tamnha de cada janela###
+bindsym $mod+t mode "resize" 
+
+######################
+### Meus Atalhos #####
+######################
+
+###ver depois o que fazer como esse programa, pode ser útil.
+###
+###bindsym $mod+s exec ~/dmenu_fo.sh
+bindsym $mod+s exec ~/.local/bin/rofi-search 
+bindsym $mod+r exec rofi -show run
+
+bindsym $mod+Ctrl+b exec firefox-esr
+bindsym $mod+Home exec pcmanfm
+bindsym $mod+p exec rofi -combi-modi window#drun -show combi -modi combi -show-icons
+bindsym $mod+Ctrl+p exec --no-startup-id pkill picom
+bindsym $mod+b exec qutebrowser 
+bindsym $mod+Ctrl+t exec --no-startup-id picom -b
+bindsym Print exec --no-startup-id scrot -zu
+bindsym $mod+Print exec --no-startup-id scrot -z -q 100
+bindsym $mod+c exec blueman-manager
+bindsym $mod+d exec dmenu_run -i -p 'Che voui?' 
+bindsym $mod+End exec ~/.local/bin/dmenu-i3-logout
+bindsym $mod+Ctrl+Return exec kitty
+bindsym $mod+Tab exec rofi -show window
+bindsym $mod+k exec kitty
+# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
+
+# Configuração dos botões 6 e 7 para abrir o Firefox
+bindsym --release button6 exec --no-startup-id qutebrowser
+bindsym --release button7 exec --no-startup-id firefox
+
+
+
+###############
+### startx ####
+###############
+
+exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
+exec xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
+exec --no-startup-id redshift -O 2500
+exec --no-startup-id ~/.local/bin/notify.sh
+exec --no-startup-id ~/.local/bin/redshift.sh
+exec --no-startup-id ~/Modelos/alternating_layouts.py
+exec --no-startup-id ~/Modelos/yt/yt-local/run
+##exec --no-startup-id ~/Modelos/i3-animated-background/scripts/loop_pngs.sh ~/Modelos/i3-animated-background/scripts/Kof98japantemplebg/
+#exec --no-startup-id ~/Modelos/i3-animated-background/scripts/loop_pngs.sh ~/Modelos/i3-animated-background/scripts/Lb2shrineofvanquishedbg 
+exec_always ~/.fehbg
+#####exec_always ~/Modelos/yt/yt-local/python3 server.py
+# tem que instalar um programa, acho que brightness' mesmo
+
+exec_always --no-startup-id ~/.local/bin/yt
+
+bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
+
+
+for_window [class="Pavucontrol"] floating enable, border pixel normal 
+for_window [class="kitty"] floating enable, border normal --exclude-titlebar 
+for_window [class="Blueman-manager"] floating enable, border normal
+###for_window [class="(?i)feh"] floating enable, border normal
+for_window [class="kitty"] resize set 100 x 50 center
+for_window [class="qutebrowser"] --exclude-titlebar 
+
+floating_minimum_size 75 x 50
+floating_maximum_size -1 x -1
+
+######################
+### redshift modes ###
+######################
+
+bindsym $mod+l mode "$mode_redshift"; exec notify-send -h string:bgcolor:#OOFFFF -h string:fgcolor:#FFD700 'Set colour temperature' 
+set $mode_redshift Set colour temperature: (a)uto, (r)eset, (2)500K, (3)000K, (4)000K, (5)000K
+set $kill_redshift pkill -9 redshift;
+mode "$mode_redshift" {
+    bindsym a exec --no-startup-id "$kill_redshift redshift -P -t 5000:4000", mode "default"
+    bindsym r exec --no-startup-id "$kill_redshift redshift -x", mode "default"
+    bindsym 2 exec --no-startup-id "$kill_redshift redshift -P -O 2500", mode "default"
+    bindsym 3 exec --no-startup-id "$kill_redshift redshift -P -O 3000", mode "default"
+    bindsym 4 exec --no-startup-id "$kill_redshift redshift -P -O 4000", mode "default"
+    bindsym 5 exec --no-startup-id "$kill_redshift redshift -P -O 5000", mode "default"
+ 
+    # exit mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+# variables de colores
+set $bg-color            #57527A    
+# Essa é a cor da border
+set $inactive-bg-color   #000000
+set $text-color          #FDC21C
+set $inactive-text-color #57527A
+set $urgent-bg-color     #E43E26
+
+# window colors
+#                       	border              background         text                 indicator
+client.focused          	$bg-color           $bg-color          $text-color          
+client.unfocused        	$inactive-bg-color  $inactive-bg-color $inactive-text-color
+client.focused_inactive 	$inactive-bg-color  $inactive-bg-color $inactive-text-color 
+client.urgent 			$urgent-bg-color    $urgent-bg-color   $text-color 			
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+        position top
+
+        ###font pango: Spleen 6x12 Medium 14
+        #font pango: CozetteVector 13
+        #font pango: Mobile Font 14
+        font pango: Fixedsys Excelsior 12
+        colors {
+                background  #101123
+                separator   #3B4165
+                #                  border             background         text
+                focused_workspace  $bg-color          $bg-color          $text-color
+                inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+                urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+}
+}
+
+## aplicativo para descobrir qual é a tecla xbindkeys
+
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Mapeamento do scroll lateral do mouse
+
+# Configuração do i3wm para definir o tamanho das janelas após abri-las
+bindsym $mod+o exec i3-sensible-terminal, resize set 1000 600
+bindsym $mod+q exec vim, resize set 800 400
